@@ -32,8 +32,7 @@ int main(void)
 		mid = (l + r) / 2;
 		sum = 0;
 
-		S = V.size();
-		for (int i = 0; i < S; i++) {
+		for (int i = 0; i < N; i++) {
 			sum += (V[i] - mid < 0 ? 0 : V[i] - mid); // 집에 들고가는 나무가 양수이면 합을 구함
 		}
 
