@@ -9,16 +9,16 @@ int compare(const void *a, const void *b)
 {
 	if (strlen((char *)a) > strlen((char *)b)) // 길이 오름차순 // a > b : return 1;
 		return 1;
-	else if (strlen((char *)a) < strlen((char *)b)) // 포인터 어렵다
-		return -1;									// 이차원 포인터로 넘어온다
-	else {											// 그럼 *a는 스트링 하나라고 생각하면 편함
-		return strcmp((char*)a, (char*)b);
-	}
-}
+	if (strlen((char *)a) < strlen((char *)b))
+		return -1;									
 
+	return strcmp((char*)a, (char*)b);
+	// 이차원 포인터로 넘어온다
+	// 그럼 *a는 스트링 하나라고 생각하면 편함
+}
 int main(void)
 {
-	//freopen("input.txt", "r", stdin);
+	freopen("input.txt", "r", stdin);
 
 	scanf("%d", &N);
 
@@ -33,7 +33,6 @@ int main(void)
 		if (strcmp(str[i], str[i+1]))
 			printf("%s\n", str[i]);
 	}
-
 
 	return 0;
 }

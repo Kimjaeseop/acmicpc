@@ -1,0 +1,15 @@
+My program seems to always exit after reading one line.
+
+Shouldn't it only halt when a line ends with an exclamation mark?
+
+After reading a line, I check the last character using a switch.
+
+When the character is a period, I print "*Nod*".
+
+When the character is a question mark, I print "Quack!".
+
+Wait, both get printed before the program exits?
+
+I guess I forgot to add break; here and there...
+
+I quacked the code!

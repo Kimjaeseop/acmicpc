@@ -15,6 +15,7 @@ void swap(int *a, int *b)
 
 int main(void)
 {
+	freopen("input.txt", "r", stdin);
 	scanf("%d", &N);
 
 	for (int i = 0; i < N; i++) {
@@ -22,6 +23,10 @@ int main(void)
 	}
 
 	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < N; j++) {
+			printf("%d ", Arr[j]);
+		}
+		printf("\n");
 		for (int j = 0; j < N - i - 1; j++) {
 			if (Arr[j] > Arr[j+1]) {
 				swap(&Arr[j], &Arr[j+1]);

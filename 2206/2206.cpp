@@ -53,7 +53,7 @@ void BFS(void)
 	int depth=0;
 	bool visited[N+1][M+1][2]={0,};
 
-	queue <tuple<int, int, int> > q;
+	queue<tuple<int, int, int>> q;
 
 	q.push(make_tuple(1, 1, 0));
 	visited[1][1][0]=1;

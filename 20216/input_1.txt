@@ -1,0 +1,15 @@
+In the loop, I read a line of input.
+
+The method std::getline(std::cin, line); reads until a newline, right?
+
+Then I branch according to the last character of the line of input.
+
+When the last character is an exclamation mark, I simply terminate the program.
+
+When the last character is a question mark, I need to print "Quack!" right?
+
+In any other case, I simply print "*Nod*".
+
+Wait, to flush the output stream I need to use std::endl instead of '\n' right?
+
+I quacked the code!
