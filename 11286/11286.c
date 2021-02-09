@@ -3,6 +3,13 @@
 int N, S, in;
 int arr[200001];
 
+/* 절댓값 힙
+   이것저것 경우의 수 처리, 예외 처리가 복잡했다
+   짜고보면 별거 아닌데,,
+
+   구현하고 다른 사람 코드보니까 pair로 (절댓값, 원래 값)을 넣어서 절댓값 우선으로 정렬하면 그냥 완성이다
+*/
+
 void swap(int a, int b)
 {
 	int temp = arr[a];
@@ -12,25 +19,25 @@ void swap(int a, int b)
 
 void heap_delete(int n)
 {
-	int idx = arr[n * 2] >= arr[n * 2 + 1] ? (n * 2 + 1) : (n * 2);
+	int idx;
+	int n_1 = arr[n * 2] < 0 ? -arr[n * 2] : arr[n * 2];
+	int n_2 = arr[n * 2 + 1] < 0 ? -arr[n * 2 + 1] : arr[n * 2 + 1];
 
-	// 이 부분을 제외하고는 max heap과 로직이 같다
-	if (n > S || (n * 2) > S || (n * 2 + 1) > S) { // 트리값을 벗어나서 체크하는 경우
-		// 노드가 두 개일 경우 터미널 노드중 오른쪽 노드는 범위를 벗어나지만
-		// 루트노드와 하나의 터미널 노드는 비교가 가능하므로 비교 후 연산
-		int n_1 = arr[n] < 0 ? -arr[n] : arr[n];
-		int n_2 = arr[n*2] < 0 ? -arr[n*2] : arr[n*2];
-
-		if (((n * 2) <= S && n_1 > n_2) || ((arr[n] == -arr[n * 2]) && (arr[n] > arr[n * 2]))) { 
-			swap(n, n * 2);
-		}
+	if (n >= S)
 		return ;
-	}
 
-	int n_1 = arr[n] < 0 ? -arr[n] : arr[n];
-	int n_2 = arr[idx] < 0 ? -arr[idx] : arr[idx];
+	idx = n_1 > n_2 ? (n * 2 + 1) : n_1 == n_2 ? ((arr[n * 2] > arr[n * 2 + 1]) ? n * 2 + 1 : n * 2) : n * 2;
 
-	if ((n_1 > n_2) || ((arr[n] == -arr[idx]) && (arr[n] > arr[idx]))) {
+	if (S % 2 == 0 && (n * 2) == S) // 터미널노드가 하나일 때
+		idx = n * 2;
+
+	if (idx > S) // 자식 인덱스를 계산했을때, 사이즈를 넘어서면 함수 종료
+		return ;
+
+	n_1 = arr[n] < 0 ? -arr[n] : arr[n];
+	n_2 = arr[idx] < 0 ? -arr[idx] : arr[idx];
+
+	if (n_1 > n_2 || (n_1 == n_2 && (arr[n] > arr[idx]))) {
 		swap(n, idx);
 		heap_delete(idx);
 	}
@@ -43,9 +50,9 @@ void heap_insert(int n)
 	}
 
 	int n_1 = arr[n] < 0 ? -arr[n] : arr[n];
-	int n_2 = arr[n/2] < 0 ? -arr[n/2] : arr[n/2];
+	int n_2 = arr[n / 2] < 0 ? -arr[n / 2] : arr[n / 2];
 
-	if (n_1 < n_2 || ((arr[n] == -arr[n / 2]) && (arr[n] < arr[n / 2]))) {
+	if (n_1 < n_2 || (n_1 == n_2 && (arr[n] < arr[n / 2]))) {
 		swap(n, n / 2);
 		heap_insert(n / 2);
 	}
@@ -53,7 +60,7 @@ void heap_insert(int n)
 
 int main(void)
 {
-	//freopen("input_1.txt", "r", stdin);
+	freopen("input_1.txt", "r", stdin);
 
 	scanf("%d", &N);
 
@@ -75,15 +82,6 @@ int main(void)
 
 			heap_insert(S);
 		}
-/*
-		   printf("========================\n");
-
-		   for (int i = 1; i <= S; i++) {
-		   printf("%d\n", arr[i]);
-		   }
-
-		   printf("========================\n");
-*/
 	}
 
 	return 0;
