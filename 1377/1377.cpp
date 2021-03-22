@@ -18,7 +18,7 @@ vector <pair <int, int>> V;
 
 int main(void)
 {
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 
 	scanf("%d", &N);
 	V.resize(N);
