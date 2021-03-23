@@ -27,7 +27,7 @@ int main(void)
 
 		d = sqrt((x[1]-x[0]) * (x[1]-x[0]) + (y[1]-y[0]) * (y[1]-y[0]));
 
-		if (d == abs(r[1]-r[0]) || d == (r[1]+r[0])) {
+		if (d == abs(r[1]-r[0]) || d == (r[1]+r[0])) { // 한 점에서 겹치는 경우
 			cout << 1 << endl;
 			continue;
 		}
@@ -45,8 +45,3 @@ int main(void)
 
 	return 0;
 }
-
-
-
-
-
