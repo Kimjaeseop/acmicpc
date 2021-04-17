@@ -24,7 +24,6 @@ while count <= 200000:
 	for i in range(N):
 		lst[S[i]] = temp_lst[i]
 
-	#print(lst)
 	count+=1
 
 print(count if count <= 200000 else -1)
