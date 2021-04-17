@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdio.h>
 #include <vector>
 
 using namespace std;
@@ -7,17 +7,23 @@ vector<vector<bool>> V;
 vector<vector<bool>> check;
 int N, M, K;
 int ANS;
-char c;
+int input;
 
-void column
+void columnFlip(vector<vector<bool>> &V, int idx) {
+	for (int i = 0; i < N; i++) {
+		V[i][idx] = !V[i][idx];
+	}
+}
+
 void findAnswer(vector<vector<bool>> V, vector<vector<bool>> check, int depth) {
 	if (depth == K) {
 		int countVal = 0;
+
 		for (int i = 0; i < N; i++) {
 			bool rightON = true;
 
-			for (int j = 0; j < N; j++) {
-				if (V[j] == 0) {
+			for (int j = 0; j < M; j++) {
+				if (V[i][j] == 0) {
 					rightON = false;
 					break;
 				}
@@ -35,8 +41,16 @@ void findAnswer(vector<vector<bool>> V, vector<vector<bool>> check, int depth) {
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
 			if (check[i][j] == 0) {
-				
+				columnFlip(V, i);
+				check[i][j] = 1;
 
+				findAnswer(V, check, depth+1);
+
+				columnFlip(V, i);
+				check[i][j] = 0;
+			}
+		}
+	}
 }
 
 int main(void)
@@ -54,20 +68,13 @@ int main(void)
 
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
-			cin.get(c);
+			scanf("%1d", &input);
 
-			if (c == '0')
+			if (input == 0)
 				V[i][j] = 0;
 			else
 				V[i][j] = 1;
 		}
-	}
-
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < M; j++) {
-			cout << V[i][j];
-		}
-		printf("\n");
 	}
 
 	scanf("%d", &K);
