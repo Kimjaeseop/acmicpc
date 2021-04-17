@@ -15,14 +15,14 @@ void BFS(bool check[50][50], int depth) {
 		for (int i = 0; i < N; i++) {
 			bool rightON = true;
 
-			for (int j = 0; j < M; j++) {
-				if (!(bits[j] & (1 << i))) {
+			for (int j = 0; j < M; j++) { // 같은 행의 비트가 전부 1인지 비교
+				if (!(bits[j] & (1 << i))) { 
 					rightON = false;
 					break;
 				}
 			}
 
-			if (rightON)
+			if (rightON) // 전부 켜져 있다면 count
 				countVal++;
 		}
 
@@ -35,7 +35,7 @@ void BFS(bool check[50][50], int depth) {
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
 			if (check[i][j] == 0) {
-				bits[i] = ~bits[i];
+				bits[i] = ~bits[i]; // 해당 열 bit flip
 				check[i][j] = 1;
 
 				BFS(check, depth+1);

@@ -1,14 +1,17 @@
 #include <iostream>
-#include <bitset>
+#include <vector>
 
 using namespace std;
 
-int N = 3;
-int M = 2;
+vector<int> V;
+
+void test() {
+	V.clear();
+}
 
 int main(void)
 {
-	long long bit;
+	test();
 
 	return 0;
 }
