@@ -62,6 +62,9 @@ void makeRoom() {
 					per = tmp; savey = y; savex = x;
 				}
 				if (tmp == per) {
+					if (savey == -1 && savex == -1) {
+						per = tmp; savey = y; savex = x;
+					}
 					int n1 = countEmptyroom(y, x);
 					int n2 = countEmptyroom(savey, savex);
 
@@ -84,7 +87,8 @@ void makeRoom() {
 			}
 		}
 		room[savey][savex] = lst[i];
-		savey = savex = per = 0;
+		savey = savex = -1;
+		per = 0;
 	}
 }
 
