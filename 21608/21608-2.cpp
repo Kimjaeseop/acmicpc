@@ -61,10 +61,14 @@ void makeRoom() {
 				if (tmp > per) {
 					per = tmp; savey = y; savex = x;
 				}
+<<<<<<< HEAD
 				if (tmp == per) {
 					if (savey == -1 && savex == -1) {
 						per = tmp; savey = y; savex = x;
 					}
+=======
+				else if (tmp == per) {
+>>>>>>> 757cef8ed05847a82aee43234bdfd2dd5dd0f1e5
 					int n1 = countEmptyroom(y, x);
 					int n2 = countEmptyroom(savey, savex);
 
@@ -72,13 +76,11 @@ void makeRoom() {
 						per = tmp; savey = y; savex = x;
 					}
 					if (n1 == n2) {
+						if (y < savey) {
+							per = tmp; savey = y; savex = x;
+						}
 						if(y == savey) {
 							if (x < savex) {
-								per = tmp; savey = y; savex = x;
-							}
-						}
-						else {
-							if (y < savey) {
 								per = tmp; savey = y; savex = x;
 							}
 						}
@@ -117,7 +119,7 @@ int getPositivescore() {
 
 int main(void)
 {
-	//freopen("input_2.txt", "r", stdin);
+	freopen("input_3.txt", "r", stdin);
 	scanf("%d", &N);
 
 	for (int i = 0; i < N*N; i++) {
@@ -129,14 +131,12 @@ int main(void)
 	}
 
 	printf("%d\n", getPositivescore());
-	/*
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
 			printf("%hd ", room[i][j]);
 		}
 		printf("\n");
 	}
-	*/
 
 	return 0;
 }
