@@ -1,3 +1,4 @@
+# [스타트와 링크](https://www.acmicpc.net/problem/14889)
 # 아이디어
 
 1. 병합해서 2/N개 뽑으면 안되나? (X)
