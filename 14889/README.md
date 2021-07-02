@@ -18,7 +18,7 @@
 			- 시작이 0이 아닌 조합은 시작이 0인 조합의 여집합에 무조건 해당된다.
 
 # Code
-'''
+C```
 #include <stdio.h>
 #include <vector>
 #include <algorithm>
@@ -101,4 +101,4 @@ int main(void)
 	
 	return 0;
 }
-'''
+```
