@@ -13,7 +13,8 @@ int MIN = 2100000000;
 typedef struct {
 	int y;
 	int x;
-} node;
+	int fishSize;
+} fish;
 
 node shark;
 
